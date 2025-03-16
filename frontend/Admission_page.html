@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admission Form</title>
+  <link rel="stylesheet" href="css/admission_style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <section class="header">
+    <nav>
+      <a href="index.html"><img src="image/logo.png" id="logo-img"></a>
+      <div class="nav-links" id="navLinks">
+        <span class="icon" onclick="hidemenu()">&#10005;</span>  
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Admission_page.html">Admission</a></li>
+          <li><a href="index.html#course_call">Course</a></li>
+          <li><a href="fees_page.html">Fees</a></li>
+        </ul>
+      </div> 
+      <span class="icon" onclick="showmenu()">&#9776;</span>
+    </nav>
+
+    <div class="wrapper">
+      <div class="r_form_wrap">
+        <div class="title">
+          <p>Admission Form</p>
+        </div>
+
+        <div class="r_form">
+          <form id="admissionForm" method="post" onsubmit="validateAndSubmitForm(); return false;">
+            <!-- Name -->
+            <div class="input_wrap">
+              <label for="yourname">Your Name</label>
+              <div class="input_item">
+                <i class="fa fa-user" id="icon"></i>
+                <input type="text" name="yourname" class="input" id="yourname" placeholder="Enter your name" required>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="input_wrap">
+              <label for="emailaddress">Email Address</label>
+              <div class="input_item">
+                <i class="fa fa-envelope" id="icon"></i>
+                <input type="email" name="email" class="input" id="emailaddress" placeholder="Enter your email" required>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="input_wrap">
+              <label for="phone">Phone</label>
+              <div class="input_item">
+                <i class="fa fa-phone-square" id="icon"></i>
+                <input type="text" name="phone" class="input" id="phone" placeholder="Enter your phone number" required>
+              </div>
+            </div>
+
+            <!-- Parents' Mobile Number -->
+            <div class="input_wrap">
+              <label for="parentsMobile">Parents' Mobile Number</label>
+              <div class="input_item">
+                <i class="fa fa-phone" id="icon"></i>
+                <input type="text" name="parentsMobile" class="input" id="parentsMobile" placeholder="Enter parents' mobile number" required>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="input_wrap">
+              <label for="address">Address</label>
+              <div class="input_item">
+                <i class="fa fa-home" id="icon"></i>
+                <input type="text" name="address" class="input" id="address" placeholder="Enter your address" required>
+              </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="input_wrap">
+              <label for="gender">Gender</label>
+              <div class="input_item">
+                <i class="fa fa-venus-mars" id="icon"></i>
+                <select id="gender" name="gender" class="input" required>
+                  <option value="">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Branch -->
+            <div class="input_wrap">
+              <label for="branch">Branch</label>
+              <div class="input_item">
+                <i class="fa fa-caret-square-o-down" id="icon"></i>
+                <select id="branch" name="branch" class="input" required>
+                  <option value="">Select Branch</option>
+                  <option value="ISE">ISE</option>
+                  <option value="CSE">CSE</option>
+                  <option value="AIML">AIML</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Admission Quota -->
+            <div class="input_wrap">
+              <label for="quota">Admission Quota</label>
+              <div class="input_item">
+                <i class="fa fa-list" id="icon"></i>
+                <select id="quota" name="quota" class="input" required>
+                  <option value="">Select Admission Quota</option>
+                  <option value="Management">Management</option>
+                  <option value="CET">CET</option>
+                  <option value="DCET">DCET</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- SSLC Percentage -->
+            <div class="input_wrap">
+              <label for="sslcPercentage">SSLC Percentage</label>
+              <div class="input_item">
+                <i class="fa fa-percent" id="icon"></i>
+                <input type="number" name="sslcPercentage" class="input" id="sslcPercentage" placeholder="Enter SSLC percentage" step="0.01" min="0" max="100" required>
+              </div>
+            </div>
+
+            <!-- PUC Percentage -->
+            <div class="input_wrap">
+              <label for="pucPercentage">PUC Percentage</label>
+              <div class="input_item">
+                <i class="fa fa-percent" id="icon"></i>
+                <input type="number" name="pucPercentage" class="input" id="pucPercentage" placeholder="Enter PUC percentage" step="0.01" min="0" max="100" required>
+              </div>
+            </div>
+
+            <!-- Category -->
+            <div class="input_wrap">
+              <label for="category">Category</label>
+              <div class="input_item">
+                <i class="fa fa-tags" id="icon"></i>
+                <select id="category" name="category" class="input" required>
+                  <option value="">Select Category</option>
+                  <option value="General">General</option>
+                  <option value="OBC">OBC</option>
+                  <option value="SC/ST">SC/ST</option>
+                  <option value="Others">Others</option>
+                </select>
+              </div>
+            </div>
+
+            <input type="submit" class="button" value="Register Now">
+            <input type="reset" class="clear_ad" value="Clear">
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    async function validateAndSubmitForm() {
+      const phoneRegex = /^\d{10}$/;
+      const emailRegex = /^[a-z0-9]{1,20}@gmail\.com$/;
+
+      const formData = {
+        yourname: document.getElementById('yourname').value,
+        email: document.getElementById('emailaddress').value,
+        phone: document.getElementById('phone').value,
+        parentsMobile: document.getElementById('parentsMobile').value,
+        address: document.getElementById('address').value,
+        gender: document.getElementById('gender').value,
+        branch: document.getElementById('branch').value,
+        quota: document.getElementById('quota').value,
+        sslcPercentage: parseFloat(document.getElementById('sslcPercentage').value),
+        pucPercentage: parseFloat(document.getElementById('pucPercentage').value),
+        category: document.getElementById('category').value
+      };
+
+      try {
+        const response = await fetch('http://localhost:5000/submitAdmission', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+          alert('Form submitted successfully!');
+          document.getElementById("admissionForm").reset();
+        } else {
+          alert('Failed to submit form.');
+        }
+      } catch (error) {
+        alert('An error occurred: ' + error.message);
+      }
+    }
+  </script>
+</body>
+</html>
